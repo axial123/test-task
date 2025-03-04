@@ -2,5 +2,5 @@
 
 internal interface ICoordinatesService
 {
-    IEnumerable<CoordinatesDto> GetCoordinates();
+    List<CoordinatesDto> GetCoordinates();
 }

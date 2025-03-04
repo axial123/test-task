@@ -1,38 +1,27 @@
-﻿using Microsoft.AspNetCore.Builder;
-using Microsoft.Extensions.DependencyInjection;
+﻿using FastEndpoints;
 
 namespace Sofomo.Coordinates;
 
-public static class CoordinatesEndpoints
+public class CoordinatesResponse
 {
-    public static void MapCoordinatesEndpoints (this WebApplication application)
+    public List<CoordinatesDto> Coordinates { get; init; }
+}
+
+internal class CoordinatesEndpoint(ICoordinatesService coordinatesService) : EndpointWithoutRequest<CoordinatesResponse>
+{
+    public override void Configure()
     {
-        application.MapGet("/coordinates", (ICoordinatesService service) =>
+        Get("/api/coordinates");
+        AllowAnonymous();
+    }
+
+    public override async Task HandleAsync(CancellationToken cancellationToken)
+    {
+        var coordinates = coordinatesService.GetCoordinates();
+
+        await SendAsync(new CoordinatesResponse()
         {
-            return service.GetCoordinates();
+            Coordinates = coordinates
         });
-    }
-
-}
-
-internal class CoordinatesService : ICoordinatesService
-{
-    public IEnumerable<CoordinatesDto> GetCoordinates()
-    {
-        return new List<CoordinatesDto>()
-        {
-            new CoordinatesDto(51.1172642,17.0215266),
-            new CoordinatesDto(51.097800, 17.032707),
-            new CoordinatesDto(51.1075504,17.0690172)
-        };
-    }
-}
-
-public static class CoordinatesServiceExtentionMethod
-{
-    public static IServiceCollection AddCooridnatesService(this IServiceCollection serviceCollection)
-    {
-        serviceCollection.AddScoped<ICoordinatesService, CoordinatesService>();
-        return serviceCollection;
     }
 }
