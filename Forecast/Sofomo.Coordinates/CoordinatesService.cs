@@ -2,13 +2,37 @@
 
 internal class CoordinatesService : ICoordinatesService
 {
-    public List<CoordinatesDto> GetCoordinates()
+    private readonly ICoordinatesRepository _repository;
+
+    public CoordinatesService(ICoordinatesRepository repository)
     {
-        return new List<CoordinatesDto>()
+        _repository = repository;
+    }
+
+    public async Task AddCoordinates(CoordinatesDto coordinates)
+    {
+        var coordinatesEntity = new Coordinates(coordinates.Latitude, coordinates.Longitude);
+        await _repository.AddAsync(coordinatesEntity);
+        await _repository.SaveChangesAsync();
+
+    }
+
+    public async Task DeleteCoordinates(string id)
+    {
+        var coordinates = await _repository.GetByIdAsync(id);
+
+        if (coordinates is not null)
         {
-            new CoordinatesDto(51.1172642,17.0215266),
-            new CoordinatesDto(51.097800, 17.032707),
-            new CoordinatesDto(51.1075504,17.0690172)
-        };
+            await _repository.DeleteAsync(coordinates);
+            await _repository.SaveChangesAsync();
+        }
+    }
+
+    public async Task<IEnumerable<CoordinatesDto>> GetAllCoordinates()
+    {
+        var bookEntities = await _repository.GetAllAsync();
+        var books = bookEntities.Select(x => new CoordinatesDto(x.Id, x.Latitude, x.Longitude));
+
+        return books;
     }
 }

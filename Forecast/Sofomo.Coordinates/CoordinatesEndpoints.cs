@@ -4,7 +4,7 @@ namespace Sofomo.Coordinates;
 
 public class CoordinatesResponse
 {
-    public List<CoordinatesDto> Coordinates { get; init; }
+    public IEnumerable<CoordinatesDto> Coordinates { get; init; }
 }
 
 internal class CoordinatesEndpoint(ICoordinatesService coordinatesService) : EndpointWithoutRequest<CoordinatesResponse>
@@ -17,7 +17,7 @@ internal class CoordinatesEndpoint(ICoordinatesService coordinatesService) : End
 
     public override async Task HandleAsync(CancellationToken cancellationToken)
     {
-        var coordinates = coordinatesService.GetCoordinates();
+        var coordinates = await coordinatesService.GetAllCoordinates();
 
         await SendAsync(new CoordinatesResponse()
         {

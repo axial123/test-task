@@ -11,7 +11,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddFastEndpoints();
 
-builder.Services.AddCoordinatesService();
+builder.Services.AddCoordinatesService(builder.Configuration);
 
 var app = builder.Build();
 

@@ -2,5 +2,7 @@
 
 internal interface ICoordinatesService
 {
-    List<CoordinatesDto> GetCoordinates();
+    Task<IEnumerable<CoordinatesDto>> GetAllCoordinates();
+    Task AddCoordinates(CoordinatesDto coordinates);
+    Task DeleteCoordinates(string id);
 }
