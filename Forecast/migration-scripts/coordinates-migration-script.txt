@@ -1,4 +1,5 @@
-dotnet ef migrations add First -c CoordinatesDbContext -p ..\Sofomo.Coordinates\Sofomo.Coordinates.csproj -s .\ForecastApi.csproj -o Data/Migrations
+
+create migration: dotnet ef migrations add First -c CoordinatesDbContext -p ..\Sofomo.Coordinates\Sofomo.Coordinates.csproj -s .\ForecastApi.csproj -o Data/Migrations
 
 WSL
 Install WSL wsl --install
@@ -8,3 +9,7 @@ Configure docker
 Settings - General - Use the WSL 2 based engine - On
 download sql server image docker pull mcr.microsoft.com/mssql/server
 run container docker run -e "ACCEPT_EULA=Y" -e "MSSQL_SA_PASSWORD=Str0ng!Passw0rd123" -p 1433:1433 -d mcr.microsoft.com/mssql/server:latest
+
+Migrations
+apply migration to db: dotnet ef database update
+apply migration to test db: dotnet ef database update -- --environment Testing

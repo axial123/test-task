@@ -33,3 +33,5 @@ app.MapControllers();
 //app.MapCoordinatesEndpoints();
 
 app.Run();
+
+public partial class Program { }

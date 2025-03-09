@@ -4,13 +4,14 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
+using Sofomo.Coordinates.Data;
 
 #nullable disable
 
 namespace Sofomo.Coordinates.Data.Migrations
 {
     [DbContext(typeof(CoordinatesDbContext))]
-    [Migration("20250305210821_First")]
+    [Migration("20250309211110_First")]
     partial class First
     {
         /// <inheritdoc />

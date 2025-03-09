@@ -19,4 +19,8 @@ public class CoordinatesDto
         Longitude = longitude;
         Id = latitude.ToString() + longitude.ToString();
     }
+    public CoordinatesDto()
+    {
+
+    }
 }

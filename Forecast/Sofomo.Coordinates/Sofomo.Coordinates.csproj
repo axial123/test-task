@@ -9,12 +9,16 @@
 	<!-- https://learn.microsoft.com/en-us/aspnet/core/fundamentals/target-aspnetcore?view=aspnetcore-3.1&tabs=visual-studio -->
 	<ItemGroup>
 		<FrameworkReference Include="Microsoft.AspNetCore.App" />
+		<InternalsVisibleTo Include="Sofomo.Coordinates.Tests" />
 	</ItemGroup>
 	<ItemGroup>
 	  <PackageReference Include="Ardalis.GuardClauses" Version="5.0.0" />
 	  <PackageReference Include="FastEndpoints" Version="5.34.0.19-beta" />
 	  <PackageReference Include="Microsoft.EntityFrameworkCore" Version="9.0.2" />
 	  <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="9.0.2" />
+	</ItemGroup>
+	<ItemGroup>
+	  <Folder Include="Data\Migrations\" />
 	</ItemGroup>
 
 </Project>
