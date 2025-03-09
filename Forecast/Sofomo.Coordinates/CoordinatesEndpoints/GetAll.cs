@@ -1,13 +1,8 @@
 ﻿using FastEndpoints;
 
-namespace Sofomo.Coordinates;
+namespace Sofomo.Coordinates.Endpoints;
 
-public class CoordinatesResponse
-{
-    public IEnumerable<CoordinatesDto> Coordinates { get; init; }
-}
-
-internal class CoordinatesEndpoint(ICoordinatesService coordinatesService) : EndpointWithoutRequest<CoordinatesResponse>
+internal class GetAll(ICoordinatesService coordinatesService) : EndpointWithoutRequest<GetAllCoordinatesResponse>
 {
     public override void Configure()
     {
@@ -19,7 +14,7 @@ internal class CoordinatesEndpoint(ICoordinatesService coordinatesService) : End
     {
         var coordinates = await coordinatesService.GetAllCoordinates();
 
-        await SendAsync(new CoordinatesResponse()
+        await SendAsync(new GetAllCoordinatesResponse()
         {
             Coordinates = coordinates
         });

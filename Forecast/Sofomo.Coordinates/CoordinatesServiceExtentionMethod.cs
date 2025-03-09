@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Sofomo.Coordinates.Data;
 
 namespace Sofomo.Coordinates;
 
@@ -10,7 +11,7 @@ public static class CoordinatesServiceExtentionMethod
     {
         var connectionString = configuration.GetConnectionString("CoordinatesConnectionString");
         serviceCollection.AddDbContext<CoordinatesDbContext>(x => x.UseSqlServer(connectionString));
-        serviceCollection.AddScoped<ICoordinatesRepository, EfCoordinatesRepository>();
+        serviceCollection.AddScoped<ICoordinatesRepository, CoordinatesRepository>();
         serviceCollection.AddScoped<ICoordinatesService, CoordinatesService>();
         return serviceCollection;
     }

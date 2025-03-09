@@ -4,3 +4,15 @@ GET {{Forecast_HostAddress}}/api/coordinates/
 Accept: application/json
 
 ###
+
+POST {{Forecast_HostAddress}}/api/coordinates/
+Accept: application/json
+Content-Type: application/json
+{
+      "latitude": 32.3236,
+      "longitude": 17.1713
+}
+
+###
+DELETE {{Forecast_HostAddress}}/api/coordinates/32.323617.1713
+Accept: application/json

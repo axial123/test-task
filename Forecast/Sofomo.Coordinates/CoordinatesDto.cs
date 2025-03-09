@@ -1,6 +1,6 @@
 ﻿namespace Sofomo.Coordinates;
 
-public struct CoordinatesDto
+public class CoordinatesDto
 {
     public double Latitude { get; }
     public double Longitude { get; }
@@ -11,5 +11,12 @@ public struct CoordinatesDto
         Latitude = latitude;
         Longitude = longitude;
         Id = id;
+    }
+
+    public CoordinatesDto(double latitude, double longitude)
+    {
+        Latitude = latitude;
+        Longitude = longitude;
+        Id = latitude.ToString() + longitude.ToString();
     }
 }

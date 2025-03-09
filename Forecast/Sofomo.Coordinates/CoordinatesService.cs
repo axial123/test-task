@@ -12,9 +12,9 @@ internal class CoordinatesService : ICoordinatesService
     public async Task AddCoordinates(CoordinatesDto coordinates)
     {
         var coordinatesEntity = new Coordinates(coordinates.Latitude, coordinates.Longitude);
+
         await _repository.AddAsync(coordinatesEntity);
         await _repository.SaveChangesAsync();
-
     }
 
     public async Task DeleteCoordinates(string id)
@@ -34,5 +34,12 @@ internal class CoordinatesService : ICoordinatesService
         var books = bookEntities.Select(x => new CoordinatesDto(x.Id, x.Latitude, x.Longitude));
 
         return books;
+    }
+
+    public async Task<CoordinatesDto?> GetCoordinatesById(string id)
+    {
+        var coordinates = await _repository.GetByIdAsync(id);
+
+        return coordinates is null ? null : new CoordinatesDto(id, coordinates.Latitude, coordinates.Longitude);
     }
 }
