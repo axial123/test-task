@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
+using Sofomo.Forecast.Data;
 
 #nullable disable
 
@@ -44,7 +45,7 @@ namespace Sofomo.Forecast.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("Latitude", "Longitude")
+                    b.HasIndex("Latitude", "Longitude", "Temperature")
                         .IsUnique();
 
                     b.ToTable("Forecast", "Forecast");
@@ -71,7 +72,7 @@ namespace Sofomo.Forecast.Data.Migrations
                             Id = 3,
                             Latitude = 51.507399999999997,
                             Longitude = -0.1278,
-                            Temperature = 10.0,
+                            Temperature = 0.0,
                             Time = new DateTime(2025, 3, 10, 9, 30, 0, 0, DateTimeKind.Unspecified)
                         });
                 });
