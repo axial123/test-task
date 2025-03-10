@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sofomo.Coordinates", "Sofom
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sofomo.Coordinates.Tests", "Sofomo.Coordinates.Tests\Sofomo.Coordinates.Tests.csproj", "{A1F0776D-8EFB-4A69-A25A-B14AE7D46109}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sofomo.Forecast", "Sofomo.Forecast\Sofomo.Forecast.csproj", "{E9FF50D3-9389-4BBC-90BD-11C49ED3D7D0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -29,6 +31,10 @@ Global
 		{A1F0776D-8EFB-4A69-A25A-B14AE7D46109}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A1F0776D-8EFB-4A69-A25A-B14AE7D46109}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A1F0776D-8EFB-4A69-A25A-B14AE7D46109}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E9FF50D3-9389-4BBC-90BD-11C49ED3D7D0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E9FF50D3-9389-4BBC-90BD-11C49ED3D7D0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E9FF50D3-9389-4BBC-90BD-11C49ED3D7D0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E9FF50D3-9389-4BBC-90BD-11C49ED3D7D0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -37,5 +43,9 @@ Global
 		{7AB8C607-4F1A-4D9A-84E5-1FADC7E2870E} = {5675FF7D-91D9-4045-A8CB-D2EA96CD65EB}
 		{86C70873-F2BD-4DB3-9E52-C1B60DCD520E} = {5675FF7D-91D9-4045-A8CB-D2EA96CD65EB}
 		{A1F0776D-8EFB-4A69-A25A-B14AE7D46109} = {5675FF7D-91D9-4045-A8CB-D2EA96CD65EB}
+		{E9FF50D3-9389-4BBC-90BD-11C49ED3D7D0} = {5675FF7D-91D9-4045-A8CB-D2EA96CD65EB}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {5A3ACC2F-397F-446C-82CE-59245AC224A0}
 	EndGlobalSection
 EndGlobal

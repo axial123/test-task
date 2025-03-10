@@ -7,7 +7,7 @@ public class CoordinatesDbContext : DbContext
 {
     internal DbSet<Coordinates> Coordinates { get; set; }
 
-    public CoordinatesDbContext(DbContextOptions options) : base(options)
+    public CoordinatesDbContext(DbContextOptions<CoordinatesDbContext> options) : base(options)
     {
 
     }
