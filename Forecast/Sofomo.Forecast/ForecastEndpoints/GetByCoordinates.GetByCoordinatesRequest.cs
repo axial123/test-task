@@ -1,14 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿namespace Sofomo.Forecast.ForecastEndpoints;
 
-namespace Sofomo.Forecast.ForecastEndpoints
+public class GetByCoordinatesRequest
 {
-    public class GetByCoordinatesRequest
-    {
-        public double Latitude { get; set; }
-        public double Longitude { get; set; }
-    }
+    public double Latitude { get; set; }
+    public double Longitude { get; set; }
+    public DateTime? Date { get; set; }
 }

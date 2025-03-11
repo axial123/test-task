@@ -18,7 +18,7 @@ DELETE {{Forecast_HostAddress}}/api/coordinates/32.323617.1713
 Accept: application/json
 
 ###
-GET {{Forecast_HostAddress}}/api/forecast?latitude=37.7749&longitude=-122.4194
+GET {{Forecast_HostAddress}}/api/forecast?latitude=52.52&longitude=13.41
 Accept: application/json
 
 ###

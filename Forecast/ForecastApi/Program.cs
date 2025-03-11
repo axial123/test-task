@@ -13,7 +13,7 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddFastEndpoints();
 
 builder.Services.AddCoordinatesService(builder.Configuration);
-builder.Services.AddForecastService(builder.Configuration);
+builder.Services.AddForecastModule(builder.Configuration);
 
 var app = builder.Build();
 

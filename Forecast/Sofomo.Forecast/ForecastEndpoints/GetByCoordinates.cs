@@ -14,7 +14,10 @@ internal class GetByCoordinates(IForecastService forecastService) : Endpoint<Get
     public override async Task HandleAsync(GetByCoordinatesRequest request, CancellationToken cancellationToken)
     {
         // add caching and fetch from there or add to cache if not exist
-        var res = await forecastService.GetByCoordinates(request.Longitude, request.Latitude);
+
+        var res = request.Date.HasValue
+            ? await forecastService.GetByCoordinatesAndDate(request.Date.Value, request.Longitude, request.Latitude)
+            : await forecastService.GetByCoordinates(request.Longitude, request.Latitude);
 
         await SendAsync(new GetByCooridnatesResponse()
         {

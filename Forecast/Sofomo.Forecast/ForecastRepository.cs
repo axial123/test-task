@@ -27,6 +27,12 @@ internal class ForecastRepository : IForecastRepository
         return -1;
     }
 
+    public async Task<IEnumerable<Forecast>> GetByCoordinatesAndDateAsync(DateTime date, double latitude, double longitude)
+    {
+        return await _forecastDbContext.Forecast.Where(i => i.Latitude == latitude && i.Longitude == longitude && i.Time == date)
+                             .ToListAsync();
+    }
+
     public async Task<IEnumerable<Forecast>> GetByCoordinatesAsync(double latitude, double longitude)
     {
         return await _forecastDbContext.Forecast.Where(i => i.Latitude == latitude && i.Longitude == longitude)
