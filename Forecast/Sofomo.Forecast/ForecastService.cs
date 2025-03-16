@@ -18,14 +18,15 @@ internal class ForecastService : IForecastService
     {
         var forecastEntity = new Forecast(forecast.Temperature, forecast.Time, forecast.Latitude, forecast.Longitude);
 
-        var createdEntityId = await _forecastRepository.AddForecast(forecastEntity);
+        var result = await _forecastRepository.AddForecast(forecastEntity);
 
-        if (createdEntityId == -1)
+        if (result.IsAdded)
         {
-            return null;
+            return new ForecastDto(forecast.Temperature, forecast.Time, forecast.Latitude, forecast.Longitude);
         }
 
-        return new ForecastDto(createdEntityId, forecast.Temperature, forecast.Time, forecast.Latitude, forecast.Longitude);
+        // handle it gracefully
+        return null;
     }
 
     public async Task<IEnumerable<ForecastDto>> GetByCoordinates(double longitude, double latitude)

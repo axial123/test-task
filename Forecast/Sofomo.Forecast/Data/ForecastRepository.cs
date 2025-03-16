@@ -1,7 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Sofomo.Forecast.Data;
 
-namespace Sofomo.Forecast;
+namespace Sofomo.Forecast.Data;
 
 internal class ForecastRepository : IForecastRepository
 {
@@ -12,19 +11,19 @@ internal class ForecastRepository : IForecastRepository
         _forecastDbContext = forecastDbContext;
     }
 
-    public async Task<int> AddForecast(Forecast forecast)
+    public async Task<AddForecastResult> AddForecast(Forecast forecast)
     {
         var existingForecast = await _forecastDbContext.Forecast.SingleOrDefaultAsync(i => i.Latitude == forecast.Latitude && i.Longitude == forecast.Longitude && i.Time == forecast.Time);
     
         if (existingForecast is null)
         {
-            await _forecastDbContext.AddAsync<Forecast>(forecast);
+            await _forecastDbContext.AddAsync(forecast);
             await _forecastDbContext.SaveChangesAsync();
 
-            return forecast.Id;
+            return new AddForecastResult(true, Id: forecast.Id);
         }
 
-        return -1;
+        return new AddForecastResult(false);
     }
 
     public async Task<IEnumerable<Forecast>> GetByCoordinatesAndDateAsync(DateTime date, double latitude, double longitude)

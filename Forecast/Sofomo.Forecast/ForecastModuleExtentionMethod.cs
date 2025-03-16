@@ -2,8 +2,9 @@
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Configuration;
 using Sofomo.Forecast.Integrations;
+using Sofomo.Forecast.Data;
 
-namespace Sofomo.Forecast.Data;
+namespace Sofomo.Forecast;
 
 public static class ForecastModuleExtentionMethod
 {
