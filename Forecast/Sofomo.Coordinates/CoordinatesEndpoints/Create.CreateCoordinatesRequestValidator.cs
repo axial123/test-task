@@ -1,8 +1,9 @@
-﻿using FluentValidation;
+﻿using FastEndpoints;
+using FluentValidation;
 
 namespace Sofomo.Coordinates.Endpoints;
 
-internal class CreateCoordinatesRequestValidator : AbstractValidator<CreateCoordinatesRequest>
+internal class CreateCoordinatesRequestValidator : Validator<CreateCoordinatesRequest>
 {
     public CreateCoordinatesRequestValidator()
     {
