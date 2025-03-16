@@ -5,9 +5,9 @@ using Sofomo.Coordinates.Data;
 
 namespace Sofomo.Coordinates;
 
-public static class CoordinatesServiceExtentionMethod
+public static class CoordinatesModuleExtentionMethod
 {
-    public static IServiceCollection AddCoordinatesService(this IServiceCollection serviceCollection, ConfigurationManager configuration)
+    public static IServiceCollection AddCoordinatesModule(this IServiceCollection serviceCollection, ConfigurationManager configuration)
     {
         var connectionString = configuration.GetConnectionString("CoordinatesConnectionString");
         serviceCollection.AddDbContext<CoordinatesDbContext>(x => x.UseSqlServer(connectionString));

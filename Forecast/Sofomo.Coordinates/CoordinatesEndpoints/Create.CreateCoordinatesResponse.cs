@@ -1,7 +1,3 @@
 ﻿namespace Sofomo.Coordinates.Endpoints;
 
-internal class CreateCoordinatesResponse
-{
-    public string Id { get; }
-    public CoordinatesDto Body { get; set; }
-}
+internal record CreateCoordinatesResponse(string Id, CoordinatesDto Body);

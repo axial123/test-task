@@ -1,6 +1,6 @@
 using FastEndpoints;
 using Sofomo.Coordinates;
-using Sofomo.Forecast.Data;
+using Sofomo.Forecast;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -12,7 +12,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddFastEndpoints();
 
-builder.Services.AddCoordinatesService(builder.Configuration);
+builder.Services.AddCoordinatesModule(builder.Configuration);
 builder.Services.AddForecastModule(builder.Configuration);
 builder.Services.AddMemoryCache();
 

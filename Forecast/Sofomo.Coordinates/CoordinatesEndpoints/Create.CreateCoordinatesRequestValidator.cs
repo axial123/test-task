@@ -1,13 +1,17 @@
-﻿using FastEndpoints;
-using FluentValidation;
+﻿using FluentValidation;
 
 namespace Sofomo.Coordinates.Endpoints;
 
-internal class CreateCoordinatesRequestValidator : Validator<CreateCoordinatesRequest>
+internal class CreateCoordinatesRequestValidator : AbstractValidator<CreateCoordinatesRequest>
 {
     public CreateCoordinatesRequestValidator()
     {
-        RuleFor(x => x.Latitude).GreaterThan(0).WithMessage("Latitude cannot be negative");
-        RuleFor(x => x.Longitude).GreaterThan(0).WithMessage("Longitude cannot be negative");
+        RuleFor(x => x.Latitude)
+            .InclusiveBetween(-90, 90)
+            .WithMessage("Latitude must be between -90 and 90");
+
+        RuleFor(x => x.Longitude)
+            .InclusiveBetween(-180, 180)
+            .WithMessage("Longitude must be between -180 and 180");
     }
 }
