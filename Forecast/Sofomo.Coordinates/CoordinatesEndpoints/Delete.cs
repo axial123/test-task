@@ -1,9 +1,19 @@
 ﻿using FastEndpoints;
+using Microsoft.Extensions.Caching.Memory;
 
 namespace Sofomo.Coordinates.Endpoints;
 
-internal class Delete(ICoordinatesService coordinatesService) : Endpoint<DeleteCoordinatesById, GetAllCoordinatesResponse>
+internal class Delete : Endpoint<DeleteCoordinatesById, GetAllCoordinatesResponse>
 {
+    private readonly ICoordinatesService _coordinatesService;
+    private readonly IMemoryCache _cache;
+
+    public Delete(ICoordinatesService coordinatesService, IMemoryCache cache)
+    {
+        _coordinatesService = coordinatesService;
+        _cache = cache;
+    }
+
     public override void Configure()
     {
         Delete("/api/coordinates/{id}");
@@ -12,7 +22,9 @@ internal class Delete(ICoordinatesService coordinatesService) : Endpoint<DeleteC
 
     public override async Task HandleAsync(DeleteCoordinatesById request, CancellationToken cancellationToken)
     {
-        await coordinatesService.DeleteCoordinates(request.Id);
+        await _coordinatesService.DeleteCoordinates(request.Id);
+
+        _cache.Remove("all");
 
         await SendNoContentAsync();
     }

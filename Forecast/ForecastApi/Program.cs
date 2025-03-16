@@ -14,6 +14,7 @@ builder.Services.AddFastEndpoints();
 
 builder.Services.AddCoordinatesService(builder.Configuration);
 builder.Services.AddForecastModule(builder.Configuration);
+builder.Services.AddMemoryCache();
 
 var app = builder.Build();
 
