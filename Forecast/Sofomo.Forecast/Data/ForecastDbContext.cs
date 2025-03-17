@@ -17,6 +17,6 @@ public class ForecastDbContext : DbContext
         modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
         modelBuilder.Entity<Forecast>().HasKey(f => f.Id);
         modelBuilder.Entity<Forecast>().Property(f => f.Id).ValueGeneratedOnAdd();
-        modelBuilder.Entity<Forecast>().HasIndex(x => new { x.Latitude, x.Longitude, x.Temperature }).IsUnique();
+        modelBuilder.Entity<Forecast>().HasIndex(x => new { x.Latitude, x.Longitude, x.Time }).IsUnique();
     }
 }

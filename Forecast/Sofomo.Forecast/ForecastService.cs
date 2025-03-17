@@ -44,15 +44,17 @@ internal class ForecastService : IForecastService
             // add to db
             // add to cache
             var forecastDto = new ForecastDto(forecastFromApi.Current.Temperature_2m, forecastFromApi.Current.Time, latitude, longitude);
+
+            return new List<ForecastDto>() { forecastDto };
         }
 
-        return forecastEntities.Select(i => new ForecastDto(i.Temperature, i.Time, i.Longitude, i.Latitude));
+        return forecastEntities.Select(i => new ForecastDto(i.Id, i.Temperature, i.Time, i.Longitude, i.Latitude));
     }
 
     public async Task<IEnumerable<ForecastDto>> GetByCoordinatesAndDate(DateTime date, double longitude, double latitude)
     {
         var forecastEntities = await _forecastRepository.GetByCoordinatesAndDateAsync(date, latitude, longitude);
 
-        return forecastEntities.Select(i => new ForecastDto(i.Temperature, i.Time, i.Longitude, i.Latitude));
+        return forecastEntities.Select(i => new ForecastDto(i.Id, i.Temperature, i.Time, i.Longitude, i.Latitude));
     }
 }

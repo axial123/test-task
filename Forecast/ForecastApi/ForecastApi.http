@@ -1,10 +1,10 @@
 @Forecast_HostAddress = http://localhost:5146
 
+### Get all coordinates
 GET {{Forecast_HostAddress}}/api/coordinates/
 Accept: application/json
 
-###
-
+### Add coordinates
 POST {{Forecast_HostAddress}}/api/coordinates/
 Accept: application/json
 Content-Type: application/json
@@ -13,21 +13,25 @@ Content-Type: application/json
       "longitude": 17.1713
 }
 
-###
+### Delete coordinates
 DELETE {{Forecast_HostAddress}}/api/coordinates/32.323617.1713
 Accept: application/json
 
-###
+### Get forecast for given coordinates
 GET {{Forecast_HostAddress}}/api/forecast?latitude=52.52&longitude=13.41
 Accept: application/json
 
-###
+### Get forecast for given coordinates and date
+GET {{Forecast_HostAddress}}/api/forecast?latitude=52.52&longitude=13.41&date=2022-01-01T12:00:00
+Accept: application/json
+
+### Add forecast
 POST {{Forecast_HostAddress}}/api/forecast/
 Accept: application/json
 Content-Type: application/json
 {
-      "latitude": 32.3236,
-      "longitude": 17.1713,
+      "latitude": 52.52,
+      "longitude": 13.41,
       "temperature": 21,
-      "time": "2022-01-01T15:00"
+      "time": "2022-01-01T12:00:00"
 }
